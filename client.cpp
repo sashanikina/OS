@@ -33,7 +33,7 @@ int main()
 		}
 		else
 		{
-			cout << "Client stopped\n"<< GetLastError();
+			cout << "Client stopped\n";
 			break;
 		}
 	}
