@@ -46,14 +46,9 @@ int main() {
             INFINITE
         );
        
-        FILE* pageLogger;
-        string pageLoggerName = "C:\\Users\\asus\\Documents\\OS\\os_lab_4_1\\logFiles\\logPage" + to_string(freePageIndex) + ".txt";
-        fopen_s(&pageLogger, pageLoggerName.c_str(), "a");
-
-        
+       
         fprintf(logger, "Time:%d Status:1 Page number:%d \n", timeGetTime(), freePageIndex);
-        fprintf(pageLogger, "Time:%d Status:0 \n", timeGetTime());
-        string someMessage = "Process number" + to_string(GetCurrentProcessId()) + " " + to_string(i);
+        string someMessage = "Process" + to_string(GetCurrentProcessId()) + "_message" + to_string(i);
         char* someData = new char[255];
         strcpy_s(someData, 255, someMessage.c_str());
         memcpy(
@@ -63,11 +58,8 @@ int main() {
         );
         srand(time(0));
         Sleep(500 + rand() % 1000);
-
         
         fprintf(logger, "Time:%d Status:2 Page number:%d \n", timeGetTime(), freePageIndex);
-        fprintf(pageLogger, "Time:%d Status:1 \n", timeGetTime());
-        fclose(pageLogger);
         
         ReleaseSemaphore(readingSemaphores[freePageIndex], 1, NULL);
     }
