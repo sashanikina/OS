@@ -45,12 +45,8 @@ int main() {
             INFINITE
         );
         
-        FILE* pageLogger;
-        string pageLoggerName = "C:\\Users\\asus\\Documents\\OS\\os_lab_4_1\\logFiles\\logPage" + to_string(freePageIndex) + ".txt";
-        fopen_s(&pageLogger, pageLoggerName.c_str(), "a");
-         
+      
         fprintf(logger, "Time:%d Status:1 Page number: %d \n", timeGetTime(), freePageIndex);
-        fprintf(pageLogger, "Time:%d Status:0 \n", timeGetTime());
         char* someData = new char[255];
         memcpy(
             someData,
@@ -61,9 +57,7 @@ int main() {
         Sleep(500 + rand() % 1000);
          
         fprintf(logger, "Time:%d Status:2 Page number:%d \n", timeGetTime(), freePageIndex);
-        fprintf(pageLogger, "Time:%d Status:2 \n", timeGetTime());
-        fclose(pageLogger);
-         
+
         ReleaseSemaphore(writingSemaphores[freePageIndex], 1, NULL);
     }
      
