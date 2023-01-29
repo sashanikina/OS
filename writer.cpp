@@ -53,7 +53,7 @@ int main() {
         
         fprintf(logger, "Time:%d Status:1 Page number:%d \n", timeGetTime(), freePageIndex);
         fprintf(pageLogger, "Time:%d Status:0 \n", timeGetTime());
-        string someMessage = "Process" + to_string(GetCurrentProcessId()) + "_message" + to_string(i);
+        string someMessage = "Process number" + to_string(GetCurrentProcessId()) + " " + to_string(i);
         char* someData = new char[255];
         strcpy_s(someData, 255, someMessage.c_str());
         memcpy(
