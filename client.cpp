@@ -28,12 +28,12 @@ int main()
 		get_data = ReadFileEx(pipe, data, 512, &Overlapped, CompletionRoutine);
 		if (get_data && pipe != INVALID_HANDLE_VALUE)
 		{
-			cout << data << endl << endl;
 			SleepEx(INFINITE, TRUE);
+			cout << data << endl << endl;
 		}
 		else
 		{
-			cout << "Client stopped\n";
+			cout << "Client stopped\n"<< GetLastError();
 			break;
 		}
 	}
